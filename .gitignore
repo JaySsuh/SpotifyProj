@@ -1,1 +1,27 @@
+# Node
+node_modules/
+.pnpm-store/
+pnpm-lock.yaml
+
+# Build output
+dist/
+build/
+.expo/
+.expo-shared/
+
+# Python
+.venv/
+venv/
+__pycache__/
+*.pyc
+
+# Env files
 .env
+.env.*
+!.env.example
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
