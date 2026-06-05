@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from app.routers import auth, user, sync, recs
+from app.backend.api.v1.routes import auth, user, sync, recs
 
 app = FastAPI(title="Spotify Discovery API")
 
