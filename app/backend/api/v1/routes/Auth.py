@@ -1,4 +1,8 @@
+import APIRouter, HTTPException
 from pydantic import BaseModel
+from app.backend.core.Config import settings
+
+router = APIRouter()
 
 class SpotifyAuthURLResponse(BaseModel):
     auth_url: str
@@ -15,7 +19,8 @@ class SpotifyProfileResponse(BaseModel):
     display_name: str | None = None
     country: str | None = None
     
-@router.post("/signin", response_model=SignInResponse, status_code=HTTP_200_OK)
-async def signin(credentials: SignInRequest):
-    if not SPOTIFY_CLIENT_ID or not SPOTIFY_REDIRECT_URI:
-        raise HTTPException(status_code=500)
+@router.get("/login", response_model=SpotifyAuthURLResponse)
+async def login():
+    if not settings.SPOTIFY_CLIENT_ID or not settings.SPOTIFY_REDIRECT_URI:
+        raise HTTPException(status_code=500, detail="Spotify config missing")
+    return {"auth_url": "placeholder"}
